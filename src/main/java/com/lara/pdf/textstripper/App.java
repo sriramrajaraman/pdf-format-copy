@@ -15,33 +15,35 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        App a = new App();
-        try {
-			a.testExtractStyledFromStyleTest();
-		} catch (COSVisitorException e) {
-			// TODO Auto-generated catch block
+			String f = "/strikethru.pdf"; //default to the file packaged with the jar
+			if (args.length > 0)
+				f = args[0]; //use the filename provided
+			App a = new App();
+			try {
+				a.testExtractStyledFromStyleTest(f);
+			} catch (COSVisitorException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			}
     }
     
-    public void testExtractStyledFromStyleTest() throws COSVisitorException, IOException
+    public void testExtractStyledFromStyleTest(String f) throws COSVisitorException, IOException
     {
-        		InputStream documentStream = App.class.getResourceAsStream("/strikethru.pdf");
-                PDDocument document = PDDocument.load(documentStream);
-            String styled = extractStyled(document);
+				InputStream documentStream = App.class.getResourceAsStream(f);
+				PDDocument document = PDDocument.load(documentStream);
+				String styled = extractStyled(document);
 
-            System.out.println("\n'style-test.pdf', extract with style:");
-            System.out.println(styled);
-            System.out.println("***********************************");
+				System.out.println("\n"+ f + ", extract with style:");
+				System.out.println(styled);
+				System.out.println("***********************************");
     }
     String extractStyled(PDDocument document) throws IOException
     {
         PDFTextStripper stripper = new PDFStyledTextStripper();
         stripper.setSortByPosition(true);
         return stripper.getText(document);
-    }    
+    }
 }
