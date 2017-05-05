@@ -3,12 +3,13 @@ Utilizes [mkl-public's](https://github.com/mkl-public) code [here](https://githu
 
 # Quickstart:
 
-##Prerequisites:
+## Prerequisites:
 * [Git](https://git-scm.com/downloads)
 * [Maven](https://maven.apache.org/download.cgi)
 * [Eclipse - optional](http://www.eclipse.org/downloads/eclipse-packages/)
 
-##Steps
+## Steps
 1. Clone this repo: git clone <this repo url>
 2. Compile the code: mvn package
-3. Run the code: java -jar pdf-format-copy-0.0.1-SNAPSHOT-jar-with-dependencies.jar [filepath]
+3. Prep eclipse project (Optional) - mvn eclipse:eclipse 
+4. Run the code: java -jar pdf-format-copy-0.0.1-SNAPSHOT-jar-with-dependencies.jar [filepath]
